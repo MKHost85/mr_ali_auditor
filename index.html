@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+  <main class="main">
+    <div class="content">
+      <div class="container">
+        <div class="main-logo">
+          <!-- يبقا ضيف الصور الخاصه بى srcset -->
+          <img src="images/Untitled-3-0٢-1.png" alt="" srcset="">
+        </div>
+        <div class="actions-btn">
+          <div id="loading" class="loading"></div>
+  
+          <div id="content_actions" >
+            <div class="select-service" id="select_service">
+              <button class="manager-btn"><a href="http://" target="_blank" rel="noopener noreferrer">Manager</a></button>
+              <button class="other-service-btn" id="btn_other_service">Other Service</button>
+            </div>
+            <div class="status-customer" id="status_customer" style="display: none;">
+              <button class="new-customer-btn"><a href="http://" target="_blank" rel="noopener noreferrer">New
+                  Customer</a></button>
+              <button class="already-customer-btn" id="btn_already_customer">Already Customer</button>
+            </div>
+            <div class="search-domain" id="search_domain" style="display: none;">
+              <form>
+                <div class="container-input">
+                  <input type="text" name="" id="" class="input-name-domain" placeholder="Enter your name domain...">
+                  <div class="search-domain-alart">
+                    Name Domain not found. Please try again or contact us To ( +201550000183 ).
+                  </div>
+                </div>
+                <button type="submit" class="search-domain-btn">Search</button>
+              </form>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slider-container">
+      <div class="slider">
+        <img src="images/logos/1.png" alt="Logo 1">
+        <img src="images/logos/2.png" alt="Logo 2">
+        <img src="images/logos/3.png" alt="Logo 3">
+        <img src="images/logos/4.png" alt="Logo 4">
+        <img src="images/logos/5.png" alt="Logo 5">
+        <img src="images/logos/6.png" alt="Logo 6">
+        <img src="images/logos/7.png" alt="Logo 7">
+        <img src="images/logos/8.png" alt="Logo 8">
+        <img src="images/logos/9.png" alt="Logo 9">
+        <img src="images/logos/10.png" alt="Logo 10">
+        <img src="images/logos/11.png" alt="Logo 11">
+        <img src="images/logos/12.png" alt="Logo 12">
+        <img src="images/logos/13.png" alt="Logo 13">
+        <img src="images/logos/14.png" alt="Logo 14">
+        <img src="images/logos/15.png" alt="Logo 15">
+        <img src="images/logos/16.png" alt="Logo 15">
+        <img src="images/logos/17.png" alt="Logo 15">
+        <img src="images/logos/18.png" alt="Logo 15">
+
+        <img src="images/logos/1.png" alt="Logo 1">
+        <img src="images/logos/2.png" alt="Logo 2">
+        <img src="images/logos/3.png" alt="Logo 3">
+        <img src="images/logos/4.png" alt="Logo 4">
+        <img src="images/logos/5.png" alt="Logo 5">
+        <img src="images/logos/6.png" alt="Logo 6">
+        <img src="images/logos/7.png" alt="Logo 7">
+        <img src="images/logos/8.png" alt="Logo 8">
+        <img src="images/logos/9.png" alt="Logo 9">
+        <img src="images/logos/10.png" alt="Logo 10">
+        <img src="images/logos/11.png" alt="Logo 11">
+        <img src="images/logos/12.png" alt="Logo 12">
+        <img src="images/logos/13.png" alt="Logo 13">
+        <img src="images/logos/14.png" alt="Logo 14">
+        <img src="images/logos/15.png" alt="Logo 15">
+        <img src="images/logos/16.png" alt="Logo 15">
+        <img src="images/logos/17.png" alt="Logo 15">
+        <img src="images/logos/18.png" alt="Logo 15">
+      </div>
+    </div>
+  </main>
+  <script>
+    const loading = document.getElementById("loading");
+
+    const contentActions = document.getElementById("content_actions");
+
+    const sectionSelectService = document.getElementById("select_service");
+    const sectionStatusCustomer = document.getElementById("status_customer");
+    const sectionSearchDomain = document.getElementById("search_domain");
+
+    const btnOtherService = document.getElementById("btn_other_service");
+    const btnAlreayCustomer = document.getElementById("btn_already_customer");
+
+
+    // دالة لإظهار التحميل
+    function showLoading(callback) {
+      contentActions.style.display = "none";
+      loading.style.display = 'block'; // إظهار التحميل
+      setTimeout(() => {
+        loading.style.display = 'none'; // إخفاء التحميل بعد 1.5 ثانية
+        contentActions.style.display = "block";
+
+        callback(); // استدعاء الدالة المطلوبة بعد انتهاء التحميل
+      }, 700);
+    }
+
+    // hide section { manager - other service} and show >>>> {new customer - already customer}
+    btnOtherService.onclick = () => {
+      showLoading(() => {
+        sectionSelectService.style.display = "none";
+        sectionStatusCustomer.style.display = "block"
+      })
+    }
+
+    // hide section {new customer - already customer} and show >>> {search your domain}
+    btnAlreayCustomer.onclick = () => {
+      showLoading(() => {
+        sectionStatusCustomer.style.display = "none"
+        sectionSearchDomain.style.display = "block";
+      })
+    }
+
+  </script>
+</body>
+
+</html>
