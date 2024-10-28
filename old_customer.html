@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Billing Information</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      /* background-color: #f5f6f8; */
+      background-color: #fff;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      width: 100%;
+    }
+
+    /* Sidebar Styling */
+    .sidebar {
+      width: 500px;
+      background-color: #f5f6f8;
+      padding: 60px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid #e0e0e0;
+      height: 100%;
+      /* Full height */
+      position: sticky !important;
+    }
+
+    .logo {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 40px;
+    }
+
+
+
+    .logo span {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1f2937;
+    }
+
+    .account-info {
+      font-size: 18px;
+      font-weight: bold;
+      color: #1f2937;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    .account-info a {
+      color: #007bff;
+      text-decoration: none;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .account-info a::before {
+      content: "←";
+      margin-right: 6px;
+      font-size: 12px;
+    }
+
+    .powered-by {
+      font-size: 12px;
+      color: #6b7280;
+      line-height: 1.6;
+    }
+
+    .powered-by strong {
+      color: #333;
+      font-weight: 700;
+    }
+
+    .powered-by a {
+      color: #007bff;
+      text-decoration: none;
+      font-size: 12px;
+      display: block;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 900px) {
+      .sidebar {
+        width: 100%;
+        padding: 40px 20px;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .plan {
+        flex-direction: column;
+      }
+
+      #changePlanBtn {
+        margin-top: 25px;
+      }
+    }
+
+    /* Content Area */
+    .content {
+      width: calc(100% - 300px);
+      padding: 60px 60px 0;
+      background-color: white;
+    }
+
+    .content h2 {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 20px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .content-form {
+      width: 60% !important;
+    }
+
+    .right-section {
+      display: block;
+    }
+
+    .plan {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 40px;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 20px;
+    }
+
+    .plan-details {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1f2937;
+    }
+
+    .plan-details .price {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1f2937;
+      margin: 5px 0;
+    }
+
+    .plan-details span {
+      display: block;
+      font-weight: 400;
+      font-size: 14px;
+      color: #6b7280;
+      line-height: 1.5;
+    }
+
+    .cancel-btn {
+      padding: 10px 20px;
+      background-color: white;
+      border: 1px solid #d3d3d3;
+      color: #333;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+      align-self: flex-start;
+    }
+
+    .cancel-btn:hover {
+      background-color: #f5f5f5;
+    }
+
+    .payment-methods {
+      margin-bottom: 40px;
+    }
+
+    .payment-methods h3 {
+      font-size: 12px;
+      font-weight: 600;
+      color: #6b7280;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .payment-method {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #e5e7eb;
+      text-transform: capitalize;
+      font-size: 16px;
+    }
+
+    .payment-method img {
+      width: 32px;
+      margin-right: 10px;
+    }
+
+    .payment-method .details {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: #1f2937;
+      font-weight: 500;
+    }
+
+    .payment-method .default {
+      margin-left: 10px;
+      background-color: #e5e7eb;
+      font-size: 12px;
+      padding: 3px 6px;
+      border-radius: 4px;
+      color: #6b7280;
+    }
+
+    .payment-method .expires {
+      color: #6b7280;
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .add-payment {
+      color: #007bff;
+      font-size: 14px;
+      cursor: pointer;
+      padding-top: 10px;
+      font-weight: 500;
+    }
+
+    .billing-info {
+      margin-bottom: 40px;
+    }
+
+    .billing-info h3 {
+      font-size: 12px;
+      font-weight: 600;
+      color: #6b7280;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .billing-info .info-item {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    .billing-info .info-item strong {
+      font-weight: 500;
+    }
+
+    .update-info {
+      color: #007bff;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: 500;
+      padding-top: 10px;
+    }
+
+    .invoice-history {
+      margin-bottom: 20px;
+    }
+
+    .invoice-history h3 {
+      font-size: 12px;
+      font-weight: 600;
+      color: #6b7280;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .invoice-history table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .invoice-history table th,
+    .invoice-history table td {
+      padding: 15px;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: left;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .invoice-history table th {
+      font-weight: normal;
+      color: #888;
+    }
+
+    .invoice-history .paid {
+      color: #28a745;
+      background-color: #e6f9ea;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+    }
+
+    /* Billing form hidden by default */
+    .billing-form {
+      display: none;
+      margin-bottom: 40px;
+      font-size: 16px;
+
+    }
+
+    .billing-form h3 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      font-weight: 600;
+      color: #1f2937;
+    }
+
+    .billing-form label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: #6b7280;
+    }
+
+    .billing-form input,
+    .billing-form select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #d1d5db;
+      border-radius: 5px;
+      font-size: 14px;
+      color: #1f2937;
+    }
+
+    .billing-form .btn-group {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .billing-form button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .billing-form .cancel-btn {
+      padding: 9px 20px;
+    }
+
+    .billing-form .save-btn {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .billing-form .cancel-btn {
+      background-color: #f5f5f5;
+      color: #333;
+      border: 1px solid #d3d3d3;
+      width: 100% !important;
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .content {
+        width: 100%;
+        padding: 40px 20px;
+      }
+    }
+
+    /* General Styles for Checkout Fields */
+    .woocommerce-checkout #customer_details {
+      display: none !important;
+    }
+
+    /* Styles for Input Fields */
+    .woocommerce-checkout input.input-text,
+    .woocommerce-checkout select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      transition: border-color 0.3s;
+    }
+
+    .woocommerce-checkout input.input-text:focus,
+    .woocommerce-checkout select:focus {
+      border-color: #007bff;
+      /* Change to your desired focus color */
+    }
+
+    /* Styles for Labels */
+    .woocommerce-checkout label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: inline-block;
+    }
+
+    /* Styles for Placeholders */
+    .woocommerce-checkout input::placeholder {
+      color: #aaa;
+      font-style: italic;
+    }
+
+    .xpay-payment-methods {
+      margin-top: 20px !important;
+    }
+
+    /* Styles for Buttons */
+    .woocommerce-checkout button.button {
+      background-color: #007bff;
+      /* Button color */
+      margin-top: 20px !important;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    .woocommerce-checkout button.button:hover {
+      background-color: #0056b3;
+      /* Darker shade on hover */
+    }
+
+    /* Styles for Error Messages */
+    .woocommerce-checkout .woocommerce-error {
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
+      color: #721c24;
+      padding: 10px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .woocommerce-checkout #customer_details {
+        padding: 15px;
+      }
+
+      .woocommerce-checkout input.input-text,
+      .woocommerce-checkout select {
+        font-size: 14px;
+      }
+
+      .woocommerce-checkout button.button {
+        width: 100%;
+        /* Full width button on mobile */
+      }
+    }
+
+    /* General Styles for Order Review */
+    .woocommerce-checkout-review-order {
+      background-color: #ffffff;
+      border: 1px solid #e1e1e1;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    /* Table Styles */
+    .shop_table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .shop_table th,
+    .shop_table td {
+      padding: 12px;
+      border-bottom: 1px solid #e1e1e1;
+      text-align: left;
+    }
+
+    .shop_table th {
+      background-color: #fff;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .product-name {
+      color: #555;
+    }
+
+    .product-total {
+      color: #007bff;
+      /* Change to your desired color */
+      font-weight: bold;
+    }
+
+    /* Subtotal and Total Styles */
+    .cart-subtotal th,
+    .order-total th {
+      font-weight: bold;
+    }
+
+    .cart-subtotal td,
+    .order-total td {
+      font-size: 18px;
+      color: #333;
+    }
+
+    /* Payment Section Styles */
+    .woocommerce-checkout-payment {
+      background-color: #fff;
+      border: 1px solid #fff;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    /* Payment Method Styles */
+    .wc_payment_methods {
+      list-style: none;
+      padding: 0;
+    }
+
+    .wc_payment_method {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .wc_payment_method input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    .payment_box {
+      margin-left: 20px;
+    }
+
+    /* Payment Method Options */
+    .xpay-method {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #e1e1e1;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .xpay-method input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    .xpay-method:hover {
+      background-color: #f1f1f1;
+    }
+
+    /* Place Order Button Styles */
+    .button.alt {
+      background-color: #007bff;
+      /* Button color */
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    .button.alt:hover {
+      background-color: #0056b3;
+      /* Darker shade on hover */
+    }
+
+    /* Privacy Policy Text Styles */
+    .woocommerce-privacy-policy-text {
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+
+      .woocommerce-checkout-review-order,
+      .woocommerce-checkout-payment {
+        padding: 15px;
+      }
+
+      .shop_table th,
+      .shop_table td {
+        padding: 10px;
+      }
+
+      .button.alt {
+        width: 100%;
+        /* Full width button on mobile */
+      }
+    }
+
+    .btn {
+      background-color: white;
+      border: 1px solid #ccc;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    .btn:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+      width: 300px;
+    }
+
+    .modal-content select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #fff;
+      font-size: 1rem;
+      appearance: none;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    select:hover {
+      border-color: #007bff;
+    }
+
+    select:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    .billing-form {
+      max-width: 600px;
+      padding: 20px;
+      background-color: #fff;
+    }
+
+    .billing-form h3 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #333;
+    }
+
+    .billing-form label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: block;
+      color: #555;
+    }
+
+    .billing-form input,
+    .billing-form select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .billing-form .btn-group {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column-reverse;
+    }
+
+    .save-btn {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .cancel-btn {
+      background-color: #f5f5f5;
+      color: #333;
+      padding: 10px 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .save-btn:hover,
+    .cancel-btn:hover {
+      opacity: 0.9;
+    }
+
+    @media (max-width:1200px) {
+      .sidebar {
+        width: 335px;
+
+      }
+    }
+
+    @media (max-width:900px) {
+      .sidebar {
+        width: 335px;
+        width: 100%;
+
+      }
+
+      .sidebar {
+        padding-bottom: 0;
+
+      }
+
+      .logo {
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 20px;
+
+      }
+
+      .logo img {
+        width: 200px;
+        margin: auto;
+      }
+
+      .account-info {
+        display: flex;
+        gap: 9px;
+        text-align: center;
+        margin-bottom: 15px;
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .account-info a {
+        margin-top: 0px;
+      }
+
+      .account-info a::before {
+        display: none;
+      }
+
+      .content {
+        width: 100%;
+        padding: 25px 20px;
+      }
+
+
+      .billing-form {
+        width: 100%;
+        max-width: none;
+      }
+
+      .billing-form .btn-group {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+
+      .billing-form button {
+        width: 100%;
+        font-weight: 500;
+      }
+
+      .payment-method {
+        font-size: 14px;
+      }
+
+    }
+
+
+    @media (max-width:480px) {
+      .billing-form .btn-group {
+        flex-direction: column-reverse;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <div>
+        <div class="logo">
+          <img width="150" src="apple-touch-icon.png" alt="Logo" />
+        </div>
+        <div class="account-info">
+          Auditoregypt.manager.io<br>
+          <a href="#">Return to Manager.io</a>
+        </div>
+      </div>
+      <!-- <div class="powered-by">
+      Powered by <strong>Auditor</strong><br>
+      Learn more about Auditor Billing<br>
+      <a href="#">Privacy</a>
+    </div> -->
+    </div>
+    <div class="content">
+      <h2>CURRENT PLAN</h2>
+      <div class="right-section">
+        <div id="right-section" class="right-section">
+          <div class="plan">
+            <div class="plan-details">
+              Cloud Edition <br>
+              <span class="price">$10 per month</span>
+              <span>Your plan renews on December 31, 2024.</span>
+            </div>
+            <button class="btn cancel-btn" id="changePlanBtn">Change plan</button>
+          </div>
+          <div class="billing-info">
+            <h3>BILLING INFORMATION</h3>
+            <div class="info-item">
+              <strong>Name:</strong> John Doe
+            </div>
+            <div class="info-item">
+              <strong>Email:</strong> john.doe@example.com
+            </div>
+            <div class="info-item">
+              <strong>Billing Address:</strong><br>
+              123 Main St, 12345<br>
+            </div>
+            <div class="info-item">
+              <strong>Phone Number:</strong> +1234567890
+            </div>
+            <div class="update-info" id="update-info">✏ Update information</div>
+          </div>
+          <div class="payment-methods">
+            <h3>PAY NOW</h3>
+            <div class="payment-method">
+              <p>Please select a subscription option to proceed with the checkout.</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="billing-form" class="billing-form" style="display: none;">
+          <h3>Billing information</h3>
+          <form id="billingForm" method="POST">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" value="John Doe">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" value="john.doe@example.com">
+            <h3 style="margin-bottom: 20px !important;">Address:</h3>
+            <label for="country">Country</label>
+            <select id="country" name="country" required>
+              <option value="United States">United States</option>
+            </select>
+            <label for="address1">Address 1</label>
+            <input type="text" name="address1" id="address1" value="123 Main St">
+            <label for="address2">Address 2</label>
+            <input type="text" name="address2" id="address2" placeholder="Address line 2" value="">
+            <label for="city">City</label>
+            <input type="text" id="city" placeholder="City" value="New York">
+            <label for="zipcode">Postal Code</label>
+            <input type="text" name="zipcode" id="zipcode" value="12345">
+            <label for="phone">Phone number</label>
+            <div style="display: flex;">
+              <input type="text" id="phone" value="+1234567890">
+            </div>
+            <div class="btn-group">
+              <button type="button" class="cancel-btn" id="cancel-form">Cancel</button>
+              <button type="submit" class="save-btn">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="planModal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h3>Select Plan</h3>
+        <select id="planSelect">
+          <option value="monthly">Monthly - $10</option>
+          <option value="yearly">Yearly - $100</option>
+        </select>
+        <button class="btn" id="applyPlan">Apply</button>
+      </div>
+    </div>
+
+    <script>
+      const changePlanBtn = document.getElementById('changePlanBtn');
+      const planModal = document.getElementById('planModal');
+      const closeModal = document.getElementById('closeModal');
+      const applyPlan = document.getElementById('applyPlan');
+      const planSelect = document.getElementById('planSelect');
+      const updateInfoBtn = document.getElementById('update-info');
+      const rightSection = document.getElementById('right-section');
+      const billingForm = document.getElementById('billing-form');
+      const cancelFormBtn = document.getElementById('cancel-form');
+
+      changePlanBtn.addEventListener('click', () => {
+        planModal.style.display = 'flex';
+      });
+
+      closeModal.addEventListener('click', () => {
+        planModal.style.display = 'none';
+      });
+
+      applyPlan.addEventListener('click', () => {
+        const planType = planSelect.value;
+        const url = new URL(window.location.href);
+        url.searchParams.set('plan_type', planType);
+        window.location.href = url.toString();
+      });
+
+      window.onclick = function (event) {
+        if (event.target === planModal) {
+          planModal.style.display = 'none';
+        }
+      };
+
+      updateInfoBtn.addEventListener('click', () => {
+        rightSection.style.display = 'none';
+        billingForm.style.display = 'block';
+      });
+
+      cancelFormBtn.addEventListener('click', () => {
+        billingForm.style.display = 'none';
+        rightSection.style.display = 'block';
+      });
+
+      $(document).ready(function () {
+        $('#billingForm').on('submit', function (e) {
+          e.preventDefault(); // Prevent default form submission
+
+          var formData = {
+            name: $('#name').val(),
+            email: $('#email').val(),
+            country: $('#country').val(),
+            address1: $('#address1').val(),
+            address2: $('#address2').val(),
+            city: $('#city').val(),
+            zipcode: $('#zipcode').val(),
+            phone: $('#phone').val()
+          };
+
+          alert('Data updated successfully!');
+          location.reload();
+        });
+      });
+    </script>
+  </div>
+</body>
+
+</html>
