@@ -116,11 +116,12 @@
             padding-bottom: 80px;
             align-self: stretch;
             min-height: 100vh;
+
         }
 
         @media (max-width:992px) {
             main {
-                padding-bottom: 30px;
+                padding-bottom: 40px;
             }
         }
 
@@ -136,7 +137,6 @@
             justify-content: center;
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            /* padding: 20px; */
 
         }
 
@@ -149,6 +149,8 @@
 
             }
         }
+
+
 
         /* Title */
         .title {
@@ -238,7 +240,8 @@
 
         }
 
-        .contact-item p,.contact-item p a {
+        .contact-item p,
+        .contact-item p a {
             color: #746d6d;
         }
 
@@ -280,6 +283,7 @@
                 /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
                 width: 100%;
                 height: 300px;
+                padding: 5px;
             }
         }
 
@@ -287,33 +291,6 @@
             font-size: 22px;
             color: #3498db;
             margin-bottom: 20px;
-        }
-
-
-
-        /* Footer */
-        .footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            padding: 10px;
-            font-size: 16px;
-            color: #aaa;
-        }
-
-        @media (max-width:992px) {
-            .footer {
-                position: relative;
-
-            }
-        }
-
-        @media (max-width:576px) {
-            .footer {
-                font-size: 12px;
-
-            }
         }
     </style>
 </head>
@@ -326,7 +303,7 @@
         <nav>
             <ul>
                 <li>
-                    <button ><a href="index.html"><img src="images/svg/back-svgrepo-com.svg"></a></button>
+                    <button><a href="index.html"><img src="images/svg/back-svgrepo-com.svg"></a></button>
                 </li>
                 <li class="active">
                     Contact Information
@@ -422,15 +399,9 @@
             </div>
         </section>
     </main>
-    <section class="footer">
-        <p>&copy; 2024 Your Company. All Rights Reserved.</p>
-    </section>
 
-    <script>
-        function goBack() {
-            history.back();
-        }
-    </script>
+
+
 
 </body>
 
