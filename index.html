@@ -27,6 +27,78 @@
       color: #000;
     }
 
+    /* newww */
+    /* Header */
+
+    header {
+      position: relative;
+    }
+
+    header nav {
+      position: absolute;
+      top: 30px;
+      left: 40px;
+
+    }
+
+    @media (max-width:576px) {
+      header nav {
+        left: 20px;
+      }
+    }
+
+    header nav ul {
+      display: flex;
+      gap: 20px;
+
+    }
+
+    @media (max-width:576px) {
+      header nav ul {
+        display: flex;
+        gap: 10px;
+
+      }
+    }
+
+    header nav ul li {
+      text-decoration: none;
+      list-style: none;
+      font-size: 18px;
+      z-index: 12;
+    }
+
+
+
+    @media (max-width:768px) {
+      header nav ul li {
+        font-size: 16px;
+      }
+
+    }
+
+    @media (max-width:576px) {
+      header nav ul li {
+        font-size: 12px;
+      }
+    }
+
+    header nav ul li.active {
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    header nav ul li button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    header nav ul li img {
+      width: 20px;
+      height: 20px;
+
+    }
 
     /* main  */
     .main {
@@ -475,6 +547,20 @@
 </head>
 
 <body>
+  <!-- newww -->
+  <header>
+    <nav>
+      <ul>
+
+        <li>
+          <a href="contact_information.html">Contact Information</a>
+        </li>
+        <li>
+          <a href="privacy_policy.html">Privet Policy</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
   <main class="main">
     <div class="content">
       <div class="container">

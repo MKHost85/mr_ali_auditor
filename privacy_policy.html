@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f2f2f2;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            max-width: 1920px;
+            margin: auto;
+            position: relative;
+
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+
+        header {
+            position: relative;
+        }
+
+        header nav {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+
+        }
+
+        @media (max-width:576px) {
+            header nav {
+                left: 20px;
+            }
+        }
+
+        header nav ul {
+            display: flex;
+            gap: 20px;
+
+        }
+
+        @media (max-width:576px) {
+            header nav ul {
+                display: flex;
+                gap: 10px;
+
+            }
+        }
+
+        header nav ul li {
+            text-decoration: none;
+            list-style: none;
+            font-size: 18px;
+            z-index: 12;
+        }
+
+
+
+        @media (max-width:768px) {
+            header nav ul li {
+                font-size: 16px;
+            }
+
+        }
+
+        @media (max-width:576px) {
+            header nav ul li {
+                font-size: 12px;
+            }
+        }
+
+        header nav ul li.active {
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            cursor: pointer;
+        }
+
+        header nav ul li button {
+            border: 0;
+            cursor: pointer;
+        }
+
+        header nav ul li img {
+            width: 20px;
+            height: 20px;
+
+        }
+
+        /* main body content */
+        main {
+
+            align-self: stretch;
+            min-height: 100vh;
+        }
+
+
+
+
+        .main-section {
+            width: 950px;
+            margin: auto;
+
+        }
+
+        @media (max-width:1200px) {
+            .main-section {
+                width: 770px;
+
+            }
+
+        }
+
+        @media (max-width:992px) {
+            .main-section {
+                width: 100%;
+                padding: 0 30px;
+
+            }
+        }
+
+        @media (max-width:768px) {
+            .main-section {
+                padding: 0 20px;
+
+            }
+        }
+
+        @media (max-width:768px) {
+            .main-section {
+                padding: 0 15px;
+
+            }
+        }
+
+        /* Title */
+        .title {
+            position: relative;
+            text-align: center;
+            padding: 90px 0 40px;
+            z-index: 10;
+        }
+
+        @media (max-width:1200px) {
+            .title {
+                padding-top: 125px;
+            }
+        }
+
+        .title h1 {
+            font-size: 45px;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        @media (max-width:992px) {
+            .title h1 {
+                font-size: 34px;
+            }
+        }
+
+        @media (max-width:768px) {
+            .title h1 {
+                font-size: 24px;
+            }
+        }
+
+
+        /* Contact Information Section */
+        .contact-info {
+            flex: 1 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background-color: #fff;
+            gap: 20px;
+
+        }
+
+        .contact-info .section-text {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .contact-info .section-text .section-text-title {
+            color: #3498db;
+            font-size: 24px;
+        }
+
+        @media (max-width:992px) {
+            .contact-info .section-text .section-text-title {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width:768px) {
+            .contact-info .section-text .section-text-title {
+                font-size: 18px;
+            }
+        }
+
+        .contact-info .section-text p,
+        .contact-info .section-text .section-text-have-list {
+            color: #746d6d;
+            font-size: 16px;
+        }
+
+        @media (max-width:992px) {
+
+            .contact-info .section-text p,
+            .contact-info .section-text .section-text-have-list {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width:768px) {
+
+            .contact-info .section-text p,
+            .contact-info .section-text .section-text-have-list {
+                font-size: 12px;
+            }
+        }
+
+
+        .contact-info .section-text .section-text-have-list {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .contact-info .section-text .section-text-have-list .title-list {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info .section-text .section-text-have-list .title-list h5 {
+
+            font-size: 16px;
+        }
+
+        @media (max-width:992px) {
+            .contact-info .section-text .section-text-have-list .title-list h5 {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width:576px) {
+            .contact-info .section-text .section-text-have-list .title-list h5 {
+                font-size: 12px;
+            }
+        }
+
+        .contact-info .section-text .section-text-have-list .circle {
+
+            width: 5px;
+            height: 5px;
+            margin-right: 5px;
+            border-radius: 50%;
+            background-color: #000;
+        }
+
+
+
+
+        .contact-info .section-text ul li {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        @media (max-width:576px) {
+            .contact-info .section-text ul li {
+                flex-direction: column;
+                align-items: start;
+            }
+        }
+
+
+
+        /* Footer */
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            font-size: 16px;
+            color: #aaa;
+        }
+
+        @media (max-width:992px) {
+            footer {
+                position: relative;
+                font-size: 14px;
+
+
+            }
+        }
+
+        @media (max-width:576px) {
+            footer {
+                font-size: 12px;
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <button ><a href="index.html"><img src="images/svg/back-svgrepo-com.svg"></a></button>
+                </li>
+                <li>
+                    <a href="contact_information.html">
+                        Contact Information</a>
+                </li>
+                <li class="active">
+                    Privet Policy
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="title">
+            <h1>Privacy Policy</h1>
+        </section>
+        <section class="main-section">
+            <div class="contact-info">
+                <div class="section-text">
+                    <h3 class="section-text-title">introductions</h3>
+                    <p>Free Download Whatsapp 73 SVG vector file in monocolor and multicolor type for Sketch and Figma
+                        from Whatsapp 73 Vectors svg vector collection. Whatsapp 73 Vectors SVG vector</p>
+                </div>
+
+                <div class="section-text">
+                    <h3 class="section-text-title">introductions</h3>
+                    <div class="section-text-have-list">
+                        <p>Free Download Whatsapp 73 SVG vector file in monocolor and multicolor type for Sketch and
+                            Figma
+                            from Whatsapp 73 Vectors svg vector collection. Whatsapp 73 Vectors SVG vector</p>
+                        <ul>
+                            <li>
+                                <div class="title-list"><span class="circle"></span>
+                                    <h5>Personal Data :</h5>
+                                </div>
+                                <p>Free Download Whatsapp 73 SVG vector file in monocolor and</p>
+                            </li>
+                            <li>
+                                <div class="title-list">
+                                    <span class="circle"></span>
+                                    <h5>Personal Data :</h5>
+                                </div>
+                                <p>Free Download Whatsapp 73 SVG vector file in monocolor and</p>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section-text">
+                    <h3 class="section-text-title">introductions</h3>
+                    <p>Free Download Whatsapp 73 SVG vector file in monocolor and multicolor type for Sketch and Figma
+                        from Whatsapp 73 Vectors svg vector collection. Whatsapp 73 Vectors SVG vector</p>
+                </div>
+
+                <div class="section-text">
+                    <h3 class="section-text-title">introductions</h3>
+                    <p>Free Download Whatsapp 73 SVG vector file in monocolor and multicolor type for Sketch and Figma
+                        from Whatsapp 73 Vectors svg vector collection. Whatsapp 73 Vectors SVG vector</p>
+                </div>
+
+                <div class="section-text">
+                    <h3 class="section-text-title">introductions</h3>
+                    <p>Free Download Whatsapp 73 SVG vector file in monocolor and multicolor type for Sketch and Figma
+                        from Whatsapp 73 Vectors svg vector collection. Whatsapp 73 Vectors SVG vector</p>
+                </div>
+
+                <div class="section-text">
+                    <h3 class="section-text-title">introductions</h3>
+                    <p>Free Download Whatsapp 73 SVG vector file in monocolor and multicolor type for Sketch and Figma
+                        from Whatsapp 73 Vectors svg vector collection. Whatsapp 73 Vectors SVG vector</p>
+                </div>
+
+                <div class="section-text">
+                    <h3 class="section-text-title">introductions</h3>
+                    <p>Free Download Whatsapp 73 SVG vector file in monocolor and multicolor type for Sketch and Figma
+                        from Whatsapp 73 Vectors svg vector collection. Whatsapp 73 Vectors SVG vector</p>
+                </div>
+
+                <div class="section-text">
+                    <h3 class="section-text-title">introductions</h3>
+                    <p>Free Download Whatsapp 73 SVG vector file in monocolor and multicolor type for Sketch and Figma
+                        from Whatsapp 73 Vectors svg vector collection. Whatsapp 73 Vectors SVG vector</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Your Company. All Rights Reserved.</p>
+    </footer>
+
+
+
+</body>
+
+</html>
