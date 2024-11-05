@@ -16,6 +16,10 @@
         body {
             background-color: #f2f2f2;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
             display: flex;
             flex-direction: column;
             max-width: 1920px;
@@ -52,6 +56,10 @@
         }
 
         header nav ul {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
             display: flex;
             gap: 20px;
 
@@ -59,6 +67,10 @@
 
         @media (max-width:576px) {
             header nav ul {
+                display: -webkit-box;
+                display: -moz-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
                 display: flex;
                 gap: 10px;
 
@@ -88,7 +100,7 @@
             }
         }
 
-        header nav ul li:hover  {
+        header nav ul li:hover {
             text-decoration: underline;
         }
 
@@ -112,6 +124,10 @@
 
         /* main body content */
         main {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
             display: flex;
             flex-direction: column;
             width: 80%;
@@ -135,11 +151,16 @@
         }
 
         .main-section {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
             display: flex;
             flex: 1 1;
             justify-content: center;
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-height: 800px;
 
         }
 
@@ -193,18 +214,22 @@
         /* Contact Information Section */
         .contact-info {
             flex: 1 1;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
             display: flex;
             flex-direction: column;
             gap: 45px;
-            padding: 45px 10px 0 45px;
+            padding: 45px 35px 0 45px;
             /* padding: 20px; */
             border-radius: 8px;
         }
 
         @media (max-width:992px) {
             .contact-info {
-                gap: 20px;
-                padding: 35px 10px 35px 35px;
+                gap: 40px;
+                padding: 35px 20px 35px 35px;
                 border-radius: 8px;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                 background-color: #fff;
@@ -215,13 +240,18 @@
 
         @media (max-width:768px) {
             .contact-info {
-                padding: 20px 10px 20px 20px;
+                padding: 35px 20px 35px 33px;
+
 
             }
         }
 
 
         .contact-item {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
             display: flex;
             align-items: center;
             gap: 25px;
@@ -235,6 +265,7 @@
             border-radius: 50%;
             border: 1px solid #ddd;
             text-align: center;
+            flex: none;
         }
 
         .contact-item img {
@@ -243,13 +274,46 @@
 
         }
 
+        .contact-item .content-data {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .contact-item .content-data h6 {
+            font-size: 18px;
+            flex: none
+        }
+
+        .contact-item .content-data .list-email,
+        .contact-item .content-data .list-phone {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .contact-item .content-data .list-email a:hover,
+        .contact-item .content-data .list-whatapp a:hover {
+            text-decoration: underline;
+        }
+
+
+
         .contact-item p,
         .contact-item p a {
             color: #746d6d;
         }
 
         @media (max-width:768px) {
-            .contact-item p {
+            .contact-item h6 {
                 font-size: 14px;
             }
         }
@@ -267,6 +331,8 @@
                 font-size: 16px;
             }
         }
+
+
 
         /* Location Map Section */
         .location-map {
@@ -328,11 +394,10 @@
                         <img src="images/svg/location-pin-alt-1-svgrepo-com.svg" alt="address">
                     </div>
                     <div class="content-data">
-                        <p>
-                            <span>Address : </span>
-                            Apt202 El-Mostashar tower, Kornish El-Nile, Hadayek Helwan, Cairo, Egypt.
 
-                        </p>
+                        <h6>Address : </h6>
+                        Apt202 El-Mostashar tower, Kornish El-Nile, Hadayek Helwan, Cairo, Egypt.
+
                     </div>
                 </div>
 
@@ -342,13 +407,13 @@
                     </div>
                     <div class="content-data">
 
-                        <p>
-                            <a href="mailto:example@yourcompany.com">
-
-                                <span>Email : </span>
-                                info@yourcompany.com
+                        <h6>Email : </h6>
+                        <div class="list-email">
+                            <a href="info@auditor-eg.com">info@auditor-eg.com</a>
+                            <a href="support@auditor-eg.com">support@auditor-eg.com
                             </a>
-                        </p>
+                        </div>
+
                     </div>
                 </div>
 
@@ -357,10 +422,11 @@
                         <img src="images/svg/phone-call-svgrepo-com.svg" alt="phone">
                     </div>
                     <div class="content-data">
-                        <p>
-                            <span>Phone : </span>
-                            +20 123 456 7890
-                        </p>
+                        <h6>Phone : </h6>
+                        <div class="list-phone">
+                            <span>+201552266000</span>
+                            <span>+2 2375 9679</span>
+                        </div>
                     </div>
                 </div>
 
@@ -369,35 +435,24 @@
                         <img src="images/svg/whatsapp-svgrepo-com.svg" alt="whatsapp">
                     </div>
                     <div class="content-data">
-                        <p>
+                        <h6>Whatsapp : </h6>
+                        <div class="list-whatapp">
                             <a href="https://wa.me/+201550000183" target="_blank" rel="noopener noreferrer">
-                                <span>Whatsapp : </span>
-                                +20 123 456 7890
+                                +20 155 000 0183
                             </a>
-                        </p>
+
+                        </div>
                     </div>
                 </div>
 
-                <div class="contact-item">
-                    <div class="svg-icon">
-                        <img src="images/svg/site-svgrepo-com.svg" alt="Website">
-                    </div>
-                    <div class="content-data">
-                        <p><a href="" target="_blank">
-                                <span>Website : </span>
-                                manager-auditor
 
-                            </a>
-                        </p>
-                    </div>
-                </div>
             </div>
 
             <div class="location-map">
 
                 <!-- You can embed a Google Map here using an iframe -->
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13844.116347939647!2d31.31943474936611!3d29.83458218246196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583426f354bf0d%3A0xba8aafa079e03f65!2z2YXYs9iq2LTZgdmJINin2YTZhti12LEg2KjYrdmE2YjYp9mG!5e0!3m2!1sar!2seg!4v1730730330901!5m2!1sar!2seg"
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3459.1671914872945!2d31.291918784888527!3d29.888282781939417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjnCsDUzJzE3LjgiTiAzMcKwMTcnMjMuMCJF!5e0!3m2!1sar!2seg!4v1730814498192!5m2!1sar!2seg"
                     width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
